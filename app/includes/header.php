@@ -1,13 +1,15 @@
 <header>
-		<div class="logo">
-			<img src="assets/images/bja_logo.png" alt="logo" class="bja-logo" />
-			<h1 class="logo-text"><span>Bogura-Joypurhat</span>Association</h1>
-		</div>
+    <a href="<?php echo BASE_URL . '/index.php'?>" class="logo">
+        <img src="assets/images/bja_logo.png" alt="logo" class="bja-logo" />
+        <h1 class="logo-text">
+            <span>Bogura-Joypurhat</span>Association
+        </h1>
+    </a>
 		<i class="fa fa-bars menu-toggle "></i>
 		<ul class="nav">
-			<li><a href="index.html">Home</a></li>
-			<li><a href="activities.html">Activities</a></li>
-			<li><a href="projectHasimukh.html">Project Hasimukh</a></li>
+			<li><a href="<?php echo BASE_URL . '/index.php'?>">Home</a></li>
+			<li><a href="<?php echo BASE_URL . '/activities.php'?>">Activities</a></li>
+			<li><a href="<?php echo BASE_URL . '/projectHasimukh.php'?>">Project Hasimukh</a></li>
 			<!-- <li><a href="#">Sign Up</a></li>
 	<li><a href="#">Login</a></li> -->
 			<li>

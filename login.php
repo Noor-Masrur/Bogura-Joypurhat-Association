@@ -1,4 +1,4 @@
-<?php include("path.php")?>
+<?php include("path.php");?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Candal&family=Lora&display=swap" rel="stylesheet">
 
     <!-- Custom Styling -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
 </head>
 
@@ -44,7 +44,7 @@
                 <div>
                     <button type="submit" name="login-btn" class="btn big-btn">Log In</button>
                 </div>
-                <p>Or <a href="register.html"><b>Sign Up</b></a></p>
+                <p>Or <a href="<?php echo BASE_URL . '/register.php'?>"><b> Sign Up</b></a></p>
             </form>
         </div>
     </div>

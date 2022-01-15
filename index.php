@@ -1,5 +1,4 @@
-<?php include("path.php")?>
-
+<?php include("path.php");?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,7 +43,7 @@
 				<div class="post">
 					<img src="assets/images/activities/img1.jpg" alt="" class="slider-image" />
 					<div class="post-info">
-						<h4><a href="activities.html">Farewell of 2k15</a></h4>
+						<h4><a href="<?php echo BASE_URL . '/activities.php'?>">Farewell of 2k15</a></h4>
 						<i class="fa fa-user"> Noor Masurur</i>
 						&nbsp;
 						<i class="far fa-calendar-week"> May 13, 2020</i>
@@ -55,7 +54,7 @@
 				<div class="post">
 					<img src="assets/images/activities/img2.jpg" alt="" class="slider-image" />
 					<div class="post-info">
-						<h4><a href="activities.html">Futsal Tournament 2020</a></h4>
+						<h4><a href="<?php echo BASE_URL . '/activities.php'?>">Futsal Tournament 2020</a></h4>
 						<i class="fa fa-user"> Tamzid Shahrier Tomal</i>
 						&nbsp;
 						<i class="far fa-calendar-week"> May 13, 2021</i>
@@ -66,7 +65,7 @@
 				<div class="post">
 					<img src="assets/images/activities/img3.jpg" alt="" class="slider-image" />
 					<div class="post-info">
-						<h4><a href="activities.html">Grand Lunch 2020</a></h4>
+						<h4><a href="<?php echo BASE_URL . '/activities.php'?>">Grand Lunch 2020</a></h4>
 						<i class="fa fa-user"> Mahbubur Rahman</i>
 						&nbsp;
 						<i class="far fa-calendar-week"> May 13, 2021</i>
@@ -76,7 +75,7 @@
 				<div class="post">
 					<img src="assets/images/activities/img4.jpg" alt="" class="slider-image" />
 					<div class="post-info">
-						<h4><a href="activities.html">Our respect for the martyrs</a></h4>
+						<h4><a href="<?php echo BASE_URL . '/activities.php'?>">Our respect for the martyrs</a></h4>
 						<i class="fa fa-user">Mahmudul Hasan Shupto</i>
 						&nbsp;
 						<i class="far fa-calendar-week"> May 13, 2021</i>
@@ -112,7 +111,7 @@
 							this project to bring smile to people during Eid and other times as well.
 						</p>
 
-						<a href="projectHasimukh.html" class="btn read-more">Read More</a>
+                        <a href="<?php echo BASE_URL . '/projectHasimukh.php'?>" class="btn read-more">Read More</a>
 
 					</div>
 				</div>
@@ -121,7 +120,7 @@
 
 					<img src="assets/images/img2.jpg" alt="" class="post-img">
 					<div class="post-preview">
-						<h2><a href="project_hasimukh.html">Project Hasimukh 2020</a></h2>
+						<h2><a href="<?php echo BASE_URL . '/projectHasimukh.php'?>">Project Hasimukh 2020</a></h2>
 						<i class="fa fa-user"> Mahmubur Rahman Munna</i>
 						&nbsp;
 						<i class="far fa-calendar-week"> May 10, 2020</i>
@@ -130,7 +129,7 @@
 							this project to bring smile to people during Eid and other times as well.
 						</p>
 
-						<a href="projectHasimukh.html" class="btn read-more">Read More</a>
+                        <a href="<?php echo BASE_URL . '/projectHasimukh.php'?>" class="btn read-more">Read More</a>
 
 					</div>
 				</div>
@@ -139,7 +138,7 @@
 
 					<img src="assets/images/img3.jpg" alt="" class="post-img">
 					<div class="post-preview">
-						<h2><a href="projectHasimukh.html">Project Hasimukh 2019</a></h2>
+						<h2><a href="<?php echo BASE_URL . '/projectHasimukh.php'?>">Project Hasimukh 2019</a></h2>
 						<i class="fa fa-user">  Marufa Khandakar Dita</i>
 						&nbsp;
 						<i class="far fa-calendar-week"> June 17, 2019</i>
@@ -148,7 +147,7 @@
 							this project to bring smile to people during Eid and other times as well.
 						</p>
 
-						<a href="project_hasimukh.html" class="btn read-more">Read More</a>
+                        <a href="<?php echo BASE_URL . '/projectHasimukh.php'?>" class="btn read-more">Read More</a>
 
 					</div>
 				</div>
