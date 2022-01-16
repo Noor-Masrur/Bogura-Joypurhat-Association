@@ -1,4 +1,5 @@
 <?php include("../../path.php");?>
+<?php include(ROOT_PATH . "/app/controllers/posts.php");?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,16 +46,19 @@
 
             <div class="content">
                 <h2 class="page-title">Edit Activites</h2>
+                <?php include(ROOT_PATH . "/app/helpers/formErrors.php"); ?>
+                
 
-                <form action="create.html" method="post">
-                    <div>
+                <form action="edit.php" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="id" value="<?php echo $id ?>" class="text-input" />
+                <div>
                         <label>Title</label>
-                        <input type="text" name="title" class="text-input" />
+                        <input type="text" name="title" value="<?php echo $title ?>" class="text-input" />
                     </div>
-
+ 
                     <div>
                         <label>Body</label>
-                        <textarea name="body" id="body"></textarea>
+                        <textarea name="body" value="<?php echo $body ?>" id="body"><?php echo $body ?></textarea>
                     </div>
 
                     <div>
@@ -64,19 +68,33 @@
 
                     <div>
                         <label>Activity</label>
-                        <select name="activity" class="text-input">
-                            <option value="Excursion">Excursion</option>
-                            <option value="Tournaments">Tournaments</option>
-                            <option value="Farewell">Farewell</option>
-                            <option value="Get Together">Get Together</option>
-                            <option value="Admission Festival">Admission Festival</option>
+                        <select name="activity_id" class="text-input">
+                            
 
+                            <?php foreach ($topics as $key => $topic):?>
+                                <?php if (!empty($activity_id) && $activity_id === $topic['id']):?>
+						            <option selected value="<?php echo $topic['id']?>"><?php echo $topic['name'];?></option>
+                                <?php else: ?>
+                                    <option value="<?php echo $topic['id']?>"><?php echo $topic['name'];?></option>
+                                <?php endif; ?>    
+                            <?php endforeach;?>
                         </select>
                     </div>
-
+                    <div>
+                        <?php if (empty($published) && $published == 0):?>
+                            <label>
+                            <input type="checkbox" name="published"> Publish
+                            </label>
+                        <?php else: ?>
+                            <label>
+                            <input type="checkbox" name="published" checked> Publish
+                            </label>
+                        <?php endif; ?> 
+                        
+                    </div>
 
                     <div> 
-                        <button type="submit" class="btn btn-big">Update Activity</button>
+                        <button type="submit" name = "update-post" class="btn btn-big">Update Activity</button>
                     </div>
                 </form>
 

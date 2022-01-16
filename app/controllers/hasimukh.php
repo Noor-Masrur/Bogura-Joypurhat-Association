@@ -26,6 +26,7 @@ if(isset($_POST['add-topic']))
         $name = $_POST['name'];
         $description = $_POST['description'];
     }
+    
 }
 
 if(isset($_GET['id'])){

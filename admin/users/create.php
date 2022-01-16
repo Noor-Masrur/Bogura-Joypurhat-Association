@@ -1,4 +1,5 @@
 <?php include("../../path.php");?>
+<?php include(ROOT_PATH . "/app/controllers/users.php");?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,15 +46,12 @@
             <div class="content">
                 <h2 class="page-title">Add Users</h2>
 
-                <form action="create.html" method="post">
+                <form action="create.php" method="post">
                     <div>
                         <label>Username</label>
                         <input type="text" name="username" class="text-input" />
                     </div>
-                    <div>
-                        <label>Roll</label>
-                        <input type="text" name="roll" class="text-input" />
-                    </div>
+                  
                     <div>
                         <label>Email</label>
                         <input type="email" name="email" class="text-input" />
@@ -67,15 +65,18 @@
                         <input type="password" name="passwordConf" class="text-input" />
                     </div>
                     <div>
-                        <label>Role</label>
-                        <select name="activity" class="text-input">
-                            <option value="Student">Student</option>
-                            <option value="Alumni">Alumni</option>
-                            
-                        </select>
+                    <?php if (empty($admin)):?>
+                            <label>
+                            <input type="checkbox" name="admin"> Admin
+                            </label>
+                        <?php else: ?>
+                            <label>
+                            <input type="checkbox" name="admin" checked> Admin
+                            </label>
+                        <?php endif; ?> 
                     </div>
                     <div>
-                        <button type="submit" class="btn btn-big">Add User</button>
+                        <button type="submit" name= "create-admin" class="btn btn-big">Add User</button>
                     </div>
                 </form>
 

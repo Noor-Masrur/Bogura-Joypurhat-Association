@@ -52,10 +52,10 @@
                         <label>Title</label>
                         <input type="text" name="title" value="<?php echo $title ?>" class="text-input" />
                     </div>
-
+ 
                     <div>
                         <label>Body</label>
-                        <textarea name="body" value="<?php echo $body ?>" id="body"></textarea>
+                        <textarea name="body" value="<?php echo $body ?>" id="body"><?php echo $body ?></textarea>
                     </div>
 
                     <div>
@@ -69,7 +69,7 @@
                             
 
                             <?php foreach ($topics as $key => $topic):?>
-                                <?php if (!empty($activity_id) && $activity_id === $topic['id']):?>
+                                <?php if (!empty($activity_id) && $activity_id == $topic['id']):?>
 						            <option selected value="<?php echo $topic['id']?>"><?php echo $topic['name'];?></option>
                                 <?php else: ?>
                                     <option value="<?php echo $topic['id']?>"><?php echo $topic['name'];?></option>
@@ -84,7 +84,7 @@
                         </select>
                     </div>
                     <div>
-                        <?php if (empty($activity_id)):?>
+                        <?php if (empty($published)):?>
                             <label>
                             <input type="checkbox" name="published"> Publish
                             </label>
