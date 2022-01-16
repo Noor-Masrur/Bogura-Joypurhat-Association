@@ -1,4 +1,5 @@
 <?php include("path.php");?>
+<?php include(ROOT_PATH . "/app/controllers/users.php");?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,18 +30,24 @@
     <div class="login-grad">
 
         <div class="auth-content">
-            <form action="register.html" method="post">
+            <form action="login.php" method="post">
                 <h2 class="form-title">Log In</h2>
+
+                <?php include(ROOT_PATH . "/app/helpers/formErrors.php"); ?>
+
                 <div>
                     <label>Username</label>
-                    <input type="text" name="username" class="text-input" />
+                    <input type="text" name="username" value="<?php echo $username;?>" class="text-input" />
                 </div>
 
                 <div>
                     <label>Password</label>
-                    <input type="password" name="password" class="text-input" />
+                    <input type="password" name="password" value="<?php echo $password;?>" class="text-input" />
                 </div>
-
+                <div>
+                    <input type="checkbox" id="remember" name="remember" value="1">
+                    <label for="remember">Remember me</label><br>
+                </div>
                 <div>
                     <button type="submit" name="login-btn" class="btn big-btn">Log In</button>
                 </div>

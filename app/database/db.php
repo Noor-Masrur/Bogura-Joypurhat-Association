@@ -1,10 +1,11 @@
 <?php
 
+session_start();
 require('connect.php');
 
 
 function debug($table)
-{
+{ 
     echo "<pre>", print_r($table, true) , "<prev>";
     die();
 }
@@ -59,23 +60,23 @@ function selectOne($table , $conditions){
 
     $sql = "SELECT * FROM $table";
     
-            $i = 0;
-            foreach($conditions as $key => $value){
-                if($i===0){
-                    $sql = $sql . " WHERE $key=?";
+    $i = 0;
+    foreach($conditions as $key => $value){
+        if($i===0){
+            $sql = $sql . " WHERE $key=?";
 
-                }
-                else{
-                    $sql = $sql . " AND $key=?";
+        }
+        else{
+            $sql = $sql . " AND $key=?";
 
-                }
-                $i++;
-            }
+        }
+        $i++;
+    }
 
-            $sql = $sql . " LIMIT 1";
-            $stmt = executeQuery($sql, $conditions);
-            $records = $stmt->get_result()->fetch_assoc();
-            return $records;
+    $sql = $sql . " LIMIT 1";
+    $stmt = executeQuery($sql, $conditions);
+    $records = $stmt->get_result()->fetch_assoc();
+    return $records;
 
 }
 
