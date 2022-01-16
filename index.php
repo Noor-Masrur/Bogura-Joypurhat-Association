@@ -1,5 +1,6 @@
 <?php include("path.php");
-include(ROOT_PATH . "/app/database/db.php");
+
+include(ROOT_PATH . "/app/controllers/hasimukh.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -173,11 +174,18 @@ include(ROOT_PATH . "/app/database/db.php");
 				<div class="section topics">
 					<h2 class="section-title">Topics</h2>
 					<ul>
-						<li><a href="#">Tournaments</a></li>
-						<li><a href="#">Excursion</a></li>
+						<?php foreach ($topics as $key => $topic):?>
+						<li><a href="#"><?php echo $topic['name'];?></a></li>
+                        <?php endforeach;?>
+					
+
+
+
+
+						<!--<li><a href="#">Excursion</a></li>
 						<li><a href="#">Farewell</a></li>
 						<li><a href="#">Get Togerther</a></li>
-						<li><a href="#">Admission Festival</a></li>
+						<li><a href="#">Admission Festival</a></li>-->
 					</ul>
 
 				</div>

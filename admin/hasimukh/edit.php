@@ -45,7 +45,7 @@
 
             <div class="content">
                 <h2 class="page-title">Edit Event</h2>
-
+                <?php include(ROOT_PATH . "/app/helpers/formErrors.php"); ?>
                 <form action="edit.php" method="post">
                 <input type="hidden" name="id" value="<?php echo $id; ?>" />
                     <div>

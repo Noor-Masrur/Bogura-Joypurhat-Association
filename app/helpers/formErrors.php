@@ -4,5 +4,5 @@
         <?php foreach ($errors as $error): ?>
             <li><?php echo "$error"; ?></li>
         <?php endforeach; ?>
-        </div>
+    </div>
 <?php endif; ?>
