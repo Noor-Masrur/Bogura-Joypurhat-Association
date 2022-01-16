@@ -16,9 +16,19 @@ function validateUser($user){
     } 
 
     $existingUser = selectOne('users', ['email' => $user['email']]);
+    
     if($existingUser){
-        array_push($errors, 'Email already exsits');
+        if(isset($user['update-user']) && $existingUser['id'] != $user['id']){
+            array_push($errors, 'Email already exsits');
+        }
+        if(isset($user['create-admin']))
+        {
+            array_push($errors, 'Email already exsits');
+        }
+        
     }
+
+
     return $errors;
 }
 

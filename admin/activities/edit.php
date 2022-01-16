@@ -50,7 +50,7 @@
                 
 
                 <form action="edit.php" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="id" value="<?php echo $id ?>" class="text-input" />
+                <input type="hidden" name="id" value="<?php echo $id ?>"  />
                 <div>
                         <label>Title</label>
                         <input type="text" name="title" value="<?php echo $title ?>" class="text-input" />

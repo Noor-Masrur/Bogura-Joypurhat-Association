@@ -6,9 +6,19 @@ function validateHasimukh($topic){
         array_push($errors, 'Name is required');
     } 
     $existingTopic = selectOne('activities', ['name' => $topic['name']]);
-    if(isset($existingTopic)){
-        array_push($errors, 'Event already exsits');
+   
+    if($existingTopic){
+        if(isset($topic['update-btn']) && $existingTopic['id'] != $topic['id']){
+            array_push($errors, 'Event with that title already exsits');
+        }
+        if(isset($topic['add-topic']))
+        {
+            array_push($errors, 'Event with that title already exsits');
+        }
+        
     }
+
+
     return $errors;
 }
 

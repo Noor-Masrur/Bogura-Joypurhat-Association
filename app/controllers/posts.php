@@ -21,6 +21,9 @@ if(isset($_GET['id'])){
     $activity_id =$post['activity_id'];
     $published = $post['published'];
 }
+
+
+
 if(isset($_POST['add-post'])){
     $errors = validatePost($_POST);
    // debug($_FILES['image']['name']);
@@ -42,7 +45,7 @@ if(isset($_POST['add-post'])){
     if(count($errors)===0){
         unset($_POST['add-post']);
         
-        $_POST['user_id'] = 1;
+        $_POST['user_id'] = $_SESSION['id'];
         $_POST['published'] = isset($_POST['published']) ? 1: 0;
         $_POST['body'] = htmlentities($_POST['body']);
 
@@ -107,7 +110,7 @@ if(isset($_POST['update-post'])){
         
         unset($_POST['update-post'], $_POST['id']);
         
-        $_POST['user_id'] = 1;
+        $_POST['user_id'] = $_SESSION['id'];
         $_POST['published'] = isset($_POST['published']) ? 1: 0;
         $_POST['body'] = htmlentities($_POST['body']);
 
