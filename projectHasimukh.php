@@ -1,4 +1,18 @@
 <?php include("path.php");?>
+<?php include(ROOT_PATH . "/app/controllers/posts.php");
+
+
+if(isset($_GET['id'])){
+    $post = selectOne('posts', ['id' => $_GET['id']]);
+    
+}
+
+else{
+    $post = selectOne('posts', ['id' => 32]);
+}
+$posts = getNotHasimukhPosts();
+$topics = selectAll('activities');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +20,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Project Hasimukh</title>
+    <title><?php echo $post['title'];?></title>
 
     <link rel="icon" type="image/png" href="assets/images/projectHasimukh_logo.png">
 
@@ -42,22 +56,10 @@
 
             <!-- Main Content -->
             <div class="main-content single">
-                <h1 class="post-title">Project of 2021</h1>
+                <h1 class="post-title"><?php echo $post['title'];?></h1>
 
                 <div class="post-content">
-                    <p>Our total collection this time was Rs. 6,000 / -, from which we can gift new clothes to 300+ kids.At the same time we give wheelchairs to two children at a school for the disabled in Thanthaniya so that they do not have any problem in getting to school.In addition, 50 kg of rice was donated to a madrasa in Maltinagar</p>
-                    <p>15,000 / - has been set aside for the treatment of two brothers from Kuwait (Aashiq, CSE 2K12, Mehdi IEM 2K11) who are suffering from serious Chronic Kidney Disease. Everyone will pray for them, so that they may win this battle and return to us soon</p>
-                    <p>Sir Faruque Hossain Sir of the Electronics and Communication Engineering (ECE) Department in Kuwait was at our event from beginning to end, and he thanked us very much for organizing this event ... and assured us that he would be with us every time.</p>
-                    <p>Note: A lot of love to all the little brothers and sisters of our team for making the event beautiful, for working tirelessly.</p>
-                    <p>
-                        This time we were able to put a smile on the faces of 300+ children!
-                        Also this time we were able to give a wheelchair to two disabled children.With your sincere cooperation, our "Project: Hasimukh" has been successfully completed for the 5th time. This time our total collection was 75000 / - (eighty five thousand) rupees.
-                    </p>
-                    <p>Note: A lot of love to all the little brothers and sisters of our team for making the event beautiful, for working tirelessly.</p>
-                    <p>
-                        This time we were able to put a smile on the faces of 300+ children!
-                        Also this time we were able to give a wheelchair to two disabled children.With your sincere cooperation, our "Project: Hasimukh" has been successfully completed for the 5th time. This time our total collection was 75000 / - (eighty five thousand) rupees.
-                    </p>
+                    <?php echo html_entity_decode($post['body']);?>
                 </div>
 
             </div>
@@ -69,34 +71,22 @@
                 <!-- Facebook page -->
                 <div class="fb-page" data-href="https://www.facebook.com/project.hashimukh/" data-tabs="" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/project.hashimukh/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/project.hashimukh/">প্রজেক্ট হাসিমুখ</a></blockquote></div>
                 <!-- //Facebook page -->
-
-
                 <div class="section hasimukh">
-                    <h2 class="section-title">All Events</h2>
+                <h2 class="section-title">All Events</h2>
+                <?php foreach ($posts as $p):?>
                     <div class="post clearfix">
-                        <img src="assets/images/img1.jpg" alt="event 2021" />
-                        <a href="" class="title"><h4>Project Hasimukh 2021</h4></a>
+                        <img src="<?php echo BASE_URL . '/assets/images/' . $p['image'];?>" alt="event 2021" />
+                        <a href="projectHasimukh.php?id=<?php echo $p['id'];?>" class="title"><h4><?php echo $p['title'];?></h4></a>
                     </div>
-
-                    <div class="post clearfix">
-                        <img src="assets/images/img2.jpg" alt="event 2020" />
-                        <a href="" class="title"><h4>Project Hasimukh 2020</h4></a>
-                    </div>
-
-                    <div class="post clearfix">
-                        <img src="assets/images/img3.jpg" alt="event 2019" />
-                        <a href="" class="title"><h4>Project Hasimukh 2019</h4></a>
-                    </div>
-
+                <?php endforeach;?>
                 </div>
                 <div class="section topics">
                     <h2 class="section-title">Topics</h2>
                     <ul>
-                        <li><a href="#">Tournaments</a></li>
-                        <li><a href="#">Excursion</a></li>
-                        <li><a href="#">Farewell</a></li>
-                        <li><a href="#">Get Togerther</a></li>
-                        <li><a href="#">Admission Festival</a></li>
+                        
+                        <?php foreach ($topics as $topic):?>
+                            <li><a href="<?php echo BASE_URL . '/index.php?t_id=' . $topic['id'] . '&name=' . $topic['name']?>"><?php echo $topic['name'];?></a></li>
+                        <?php endforeach;?>
                     </ul>
 
                 </div>

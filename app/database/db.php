@@ -148,6 +148,16 @@ function getPublishedPosts(){
 
 }
 
+function getPostsByTopic($topic_id){
+    global $conn;
+    $sql = "SELECT p.*, u.username FROM posts AS p JOIN users AS u ON p.user_id=u.id WHERE p.published=? AND activity_id=?";
+    $stmt = executeQuery($sql, ['published'=>1 , 'topic_id' => $topic_id]);
+    $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    return $records;
+
+}
+
+
 
 function getNotHasimukhPosts(){
 
@@ -167,11 +177,22 @@ function getNotHasimukhPosts(){
 
 
 function searchPosts($term){
+    $match = '%' . $term . '%';
     global $conn;
     $sql = "SELECT p.*, 
-    u.username FROM posts AS p JOIN users AS u ON p.user_id=u.id WHERE p.published=? AND NOT p.activity_id=1";
-    $stmt = executeQuery($sql, ['published'=>1]);
+    u.username 
+    FROM posts AS p 
+    JOIN users AS u 
+    ON p.user_id=u.id 
+    WHERE p.published=? 
+    AND p.title LIKE ? OR p.body LIKE ?
+    ";
+
+    $stmt = executeQuery($sql, ['published'=>1, 'title' => $match , 'body' => $match]);
     $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     return $records;
 
 }
+
+
+

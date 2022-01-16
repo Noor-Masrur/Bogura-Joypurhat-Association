@@ -1,8 +1,31 @@
 <?php include("path.php");
 
 include(ROOT_PATH . "/app/controllers/hasimukh.php");
-$posts = getPublishedPosts();
-$posts_p = getNotHasimukhPosts();
+
+$posts = array();
+$posts_p = array();
+$posts_title ='Project Hasimukh';
+
+if(isset($_GET['t_id'])){
+	$posts_p = getPostsByTopic($_GET['t_id']);
+	$posts_title =$_GET['name'];
+	$posts =  getPublishedPosts();
+}
+
+else if(isset($_POST['search-term'])){
+	$posts_title ="Search results for '" . $_POST['search-term'] . "'";
+	$posts_p = searchPosts($_POST['search-term']);
+	$posts = getPublishedPosts();
+}
+else{
+
+	$posts = getPublishedPosts();
+	$posts_p = getNotHasimukhPosts();
+	
+}
+
+
+
 
 ?>
 <!DOCTYPE html>
@@ -53,7 +76,7 @@ $posts_p = getNotHasimukhPosts();
 				<div class="post">
 					<img src="<?php echo BASE_URL . '/assets/images/' . $post['image'];?>" alt="" class="slider-image" />
 					<div class="post-info">
-						<h4><a href="<?php echo BASE_URL . '/activities.php'?>"><?php echo $post['title'];?></a></h4>
+						<h4><a href="activities.php?id=<?php echo $post['id'];?>"><?php echo $post['title'];?></a></h4>
 						<i class="fa fa-user"> <?php echo $post['username'];?></i>
 						&nbsp;
 						<i class="far fa-calendar-week"> <?php echo date('F j, Y',strtotime($post['created_at']));?></i>
@@ -71,19 +94,19 @@ $posts_p = getNotHasimukhPosts();
 			<!-- Main Content -->
 
 			<div class="main-content">
-				<h1 class="project-hasimukh">Project Hasimukh</h1>
+				<h1 class="project-hasimukh"><?php echo $posts_title?></h1>
 				<?php foreach($posts_p as $post): ?>
 					<div class="post clearfix">
 						<img src="<?php echo BASE_URL . '/assets/images/' . $post['image'];?>" alt="" class="post-img">
 						<div class="post-preview">
-							<h2><a href="project_hasimukh.html"><?php echo $post['title'];?></a></h2>
+							<h2><a href="projectHasimukh.php?id=<?php echo $post['id'];?>"><?php echo $post['title'];?></a></h2>
 							<i class="fa fa-user"><?php echo $post['username'];?></i>
 							&nbsp;
 							<i class="far fa-calendar-week"><?php echo date('F j, Y',strtotime($post['created_at']));?></i>
 							<p class="preview-text">
 								<?php echo html_entity_decode(substr($post['body'], 0 ,320) . '...');?>
 							</p>
-							<a href="<?php echo BASE_URL . '/projectHasimukh.php'?>" class="btn read-more">Read More</a>
+							<a href="projectHasimukh.php?id=<?php echo $post['id'];?>" class="btn read-more">Read More</a>
 
 						</div>
 					</div>
@@ -99,7 +122,7 @@ $posts_p = getNotHasimukhPosts();
 			<div class="sidebar">
 				<div class="section search">
 					<h2 class="section-title">Search</h2>
-					<form action="index.html" method="post">
+					<form action="index.php" method="post">
 						<input type="text" name="search-term" class="text-input" placeholder="Search...">
 					</form>
 				</div>
@@ -109,7 +132,7 @@ $posts_p = getNotHasimukhPosts();
 					<h2 class="section-title">Topics</h2>
 					<ul>
 						<?php foreach ($topics as $key => $topic):?>
-						<li><a href="#"><?php echo $topic['name'];?></a></li>
+							<li><a href="<?php echo BASE_URL . '/index.php?t_id=' . $topic['id'] . '&name=' . $topic['name']?>"><?php echo $topic['name'];?></a></li>
                         <?php endforeach;?>
 					
 
