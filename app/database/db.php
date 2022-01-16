@@ -139,14 +139,39 @@ function delete($table,$id){
 
 }
 
+function getPublishedPosts(){
+    global $conn;
+    $sql = "SELECT p.*, u.username FROM posts AS p JOIN users AS u ON p.user_id=u.id WHERE p.published=? AND NOT p.activity_id=1";
+    $stmt = executeQuery($sql, ['published'=>1]);
+    $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    return $records;
+
+}
 
 
-$conditions = [
-    'username' => 'Tausif',
-    'admin' => 0,
-    'email' => 'noormasrur50@gmail.com',
-    'password' => '12345678'
-    ];
+function getNotHasimukhPosts(){
+
+    global $conn;
+    $sql = "SELECT 
+    p.*, u.username 
+    FROM posts AS p 
+    JOIN users AS u 
+    ON p.user_id=u.id 
+    WHERE p.published=? 
+    AND p.activity_id=1";
+    $stmt = executeQuery($sql, ['published'=>1]);
+    $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    return $records;
+
+}
 
 
+function searchPosts($term){
+    global $conn;
+    $sql = "SELECT p.*, 
+    u.username FROM posts AS p JOIN users AS u ON p.user_id=u.id WHERE p.published=? AND NOT p.activity_id=1";
+    $stmt = executeQuery($sql, ['published'=>1]);
+    $records = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    return $records;
 
+}

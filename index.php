@@ -1,6 +1,9 @@
 <?php include("path.php");
 
 include(ROOT_PATH . "/app/controllers/hasimukh.php");
+$posts = getPublishedPosts();
+$posts_p = getNotHasimukhPosts();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,118 +47,49 @@ include(ROOT_PATH . "/app/controllers/hasimukh.php");
 			<i class="fas fa-angle-right next"></i>
 
 			<div class="post-wrapper">
+				
+				<?php foreach($posts as $post): ?>
 
 				<div class="post">
-					<img src="assets/images/activities/img1.jpg" alt="" class="slider-image" />
+					<img src="<?php echo BASE_URL . '/assets/images/' . $post['image'];?>" alt="" class="slider-image" />
 					<div class="post-info">
-						<h4><a href="<?php echo BASE_URL . '/activities.php'?>">Farewell of 2k15</a></h4>
-						<i class="fa fa-user"> Noor Masurur</i>
+						<h4><a href="<?php echo BASE_URL . '/activities.php'?>"><?php echo $post['title'];?></a></h4>
+						<i class="fa fa-user"> <?php echo $post['username'];?></i>
 						&nbsp;
-						<i class="far fa-calendar-week"> May 13, 2020</i>
+						<i class="far fa-calendar-week"> <?php echo date('F j, Y',strtotime($post['created_at']));?></i>
 					</div>
 				</div>
-
-
-				<div class="post">
-					<img src="assets/images/activities/img2.jpg" alt="" class="slider-image" />
-					<div class="post-info">
-						<h4><a href="<?php echo BASE_URL . '/activities.php'?>">Futsal Tournament 2020</a></h4>
-						<i class="fa fa-user"> Tamzid Shahrier Tomal</i>
-						&nbsp;
-						<i class="far fa-calendar-week"> May 13, 2021</i>
-					</div>
-				</div>
-
-
-				<div class="post">
-					<img src="assets/images/activities/img3.jpg" alt="" class="slider-image" />
-					<div class="post-info">
-						<h4><a href="<?php echo BASE_URL . '/activities.php'?>">Grand Lunch 2020</a></h4>
-						<i class="fa fa-user"> Mahbubur Rahman</i>
-						&nbsp;
-						<i class="far fa-calendar-week"> May 13, 2021</i>
-					</div>
-				</div>
-
-				<div class="post">
-					<img src="assets/images/activities/img4.jpg" alt="" class="slider-image" />
-					<div class="post-info">
-						<h4><a href="<?php echo BASE_URL . '/activities.php'?>">Our respect for the martyrs</a></h4>
-						<i class="fa fa-user">Mahmudul Hasan Shupto</i>
-						&nbsp;
-						<i class="far fa-calendar-week"> May 13, 2021</i>
-					</div>
-				</div>
-
+				<?php endforeach; ?>
 			</div>
-
-
 		</div>
-
-
-
 		<!-- //Activities -->
+
 		<!-- Project Hasimukh -->
 
 		<div class="content clearfix">
 
 			<!-- Main Content -->
+
 			<div class="main-content">
 				<h1 class="project-hasimukh">Project Hasimukh</h1>
+				<?php foreach($posts_p as $post): ?>
+					<div class="post clearfix">
+						<img src="<?php echo BASE_URL . '/assets/images/' . $post['image'];?>" alt="" class="post-img">
+						<div class="post-preview">
+							<h2><a href="project_hasimukh.html"><?php echo $post['title'];?></a></h2>
+							<i class="fa fa-user"><?php echo $post['username'];?></i>
+							&nbsp;
+							<i class="far fa-calendar-week"><?php echo date('F j, Y',strtotime($post['created_at']));?></i>
+							<p class="preview-text">
+								<?php echo html_entity_decode(substr($post['body'], 0 ,320) . '...');?>
+							</p>
+							<a href="<?php echo BASE_URL . '/projectHasimukh.php'?>" class="btn read-more">Read More</a>
 
-				<div class="post">
-
-					<img src="assets/images/img1.jpg" alt="" class="post-img">
-					<div class="post-preview">
-						<h2><a href="project_hasimukh.html">Project Hasimukh 2021</a></h2>
-						<i class="fa fa-user"> Noor Masurur</i>
-						&nbsp;
-						<i class="far fa-calendar-week"> May 13, 2021</i>
-						<p class="preview-text">
-							Project Hasimukh is a charitable project where few KUETians from Bogura-Joypurhat Association have started
-							this project to bring smile to people during Eid and other times as well.
-						</p>
-
-                        <a href="<?php echo BASE_URL . '/projectHasimukh.php'?>" class="btn read-more">Read More</a>
-
+						</div>
 					</div>
-				</div>
-
-				<div class="post">
-
-					<img src="assets/images/img2.jpg" alt="" class="post-img">
-					<div class="post-preview">
-						<h2><a href="<?php echo BASE_URL . '/projectHasimukh.php'?>">Project Hasimukh 2020</a></h2>
-						<i class="fa fa-user"> Mahmubur Rahman Munna</i>
-						&nbsp;
-						<i class="far fa-calendar-week"> May 10, 2020</i>
-						<p class="preview-text">
-							Project Hasimukh is a charitable project where few KUETians from Bogura-Joypurhat Association have started
-							this project to bring smile to people during Eid and other times as well.
-						</p>
-
-                        <a href="<?php echo BASE_URL . '/projectHasimukh.php'?>" class="btn read-more">Read More</a>
-
-					</div>
-				</div>
-
-				<div class="post">
-
-					<img src="assets/images/img3.jpg" alt="" class="post-img">
-					<div class="post-preview">
-						<h2><a href="<?php echo BASE_URL . '/projectHasimukh.php'?>">Project Hasimukh 2019</a></h2>
-						<i class="fa fa-user">  Marufa Khandakar Dita</i>
-						&nbsp;
-						<i class="far fa-calendar-week"> June 17, 2019</i>
-						<p class="preview-text">
-							Project Hasimukh is a charitable project where few KUETians from Bogura-Joypurhat Association have started
-							this project to bring smile to people during Eid and other times as well.
-						</p>
-
-                        <a href="<?php echo BASE_URL . '/projectHasimukh.php'?>" class="btn read-more">Read More</a>
-
-					</div>
-				</div>
+				<?php endforeach; ?>
+				
+				
 
 			</div>
 
