@@ -3,9 +3,10 @@
 
 include(ROOT_PATH . "/app/database/db.php");
 include(ROOT_PATH . "/app/helpers/validateUser.php");
+include(ROOT_PATH . "/app/helpers/middleware.php");
 
 $table = 'users';
-$admin_users = selectAll($table, ['admin' => 1]);
+$admin_users = selectAll($table);
 $id= '';
 $admin ='';
 $errors = array();
@@ -84,7 +85,7 @@ if(isset($_POST['register-btn']) || isset($_POST['create-admin'])){
 
 if(isset($_POST['update-user'])){
     
-
+    adminOnly();
     $errors = validateUser($_POST);
     
 
@@ -122,7 +123,7 @@ if(isset($_GET['id'])){
     $user = selectOne($table, ['id' => $_GET['id']]);
     $id = $user['id'];
     $username = $user['username']; 
-    $admin = isset($user['admin']) ? 1 : 0 ;
+    $admin = $user['admin'] ;
     $email = $user['email'];
     
 }
@@ -158,6 +159,7 @@ if(isset($_POST['login-btn'])){
 
 
 if(isset($_GET['delete_id'])){
+    adminOnly();
     $id = $_GET['delete_id'];
     $count = delete($table, $id);
     $_SESSION['message']= "Admin user deleted successfully.";

@@ -2,6 +2,7 @@
 
 include(ROOT_PATH . "/app/database/db.php");
 include(ROOT_PATH . "/app/helpers/validateHasimukh.php");
+include(ROOT_PATH . "/app/helpers/middleware.php");
 $table = 'activities';
 
 $errors = array();
@@ -13,6 +14,7 @@ $topics = selectAll($table);
 
 if(isset($_POST['add-topic']))
 {   
+    adminOnly();
     $errors = validateHasimukh($_POST);
     if(count($errors)=== 0){
         unset($_POST['add-topic'], $_POST['image']);
@@ -37,6 +39,7 @@ if(isset($_GET['id'])){
 }
 
 if(isset($_GET['del_id'])){
+    adminOnly();
     $id = $_GET['del_id'];
     $count = delete($table, $id);
     $_SESSION['message']= "Deleted successfully.";
@@ -46,7 +49,7 @@ if(isset($_GET['del_id'])){
 
 if(isset($_POST['update-btn'])){
 
-
+    adminOnly();
     $errors = validateHasimukh($_POST);
     if(count($errors)=== 0){
         $id = $_POST['id'];

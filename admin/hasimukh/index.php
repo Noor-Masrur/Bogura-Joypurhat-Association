@@ -1,5 +1,7 @@
 <?php include("../../path.php");?>
-<?php include(ROOT_PATH . "/app/controllers/hasimukh.php");?>
+<?php include(ROOT_PATH . "/app/controllers/hasimukh.php");
+adminOnly();
+?>
 <!DOCTYPE html>
 <html lang="en">
 

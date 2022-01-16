@@ -1,5 +1,6 @@
 <?php include("path.php");?>
-<?php include(ROOT_PATH . "/app/controllers/users.php");?>
+<?php include(ROOT_PATH . "/app/controllers/users.php");
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +27,8 @@
 
 
 <body>
-    <?php include(ROOT_PATH . "/app/includes/header.php") ?>
+    <?php include(ROOT_PATH . "/app/includes/header.php");
+    guestOnly(); ?>
 
     <div class="login-grad">
         <div class="auth-content">
