@@ -1,5 +1,5 @@
 <?php include("../../path.php");?>
-include(ROOT_PATH . "/app/controllers/activities.php");
+<?php include(ROOT_PATH . "/app/controllers/posts.php");?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,16 +46,16 @@ include(ROOT_PATH . "/app/controllers/activities.php");
 
             <div class="content">
                 <h2 class="page-title">Add Activites</h2>
-
-                <form action="create.php" method="post">
+                <?php include(ROOT_PATH . "/app/helpers/formErrors.php"); ?>
+                <form action="create.php" method="post" enctype="multipart/form-data">
                     <div>
                         <label>Title</label>
-                        <input type="text" name="title" class="text-input" />
+                        <input type="text" name="title" value="<?php echo $title ?>" class="text-input" />
                     </div>
 
                     <div>
                         <label>Body</label>
-                        <textarea name="body" id="body"></textarea>
+                        <textarea name="body" value="<?php echo $body ?>" id="body"></textarea>
                     </div>
 
                     <div>
@@ -65,19 +65,39 @@ include(ROOT_PATH . "/app/controllers/activities.php");
 
                     <div>
                         <label>Activity</label>
-                        <select name="activity" class="text-input">
-                            <option value="Excursion">Excursion</option>
+                        <select name="activity_id" class="text-input">
+                            
+
+                            <?php foreach ($topics as $key => $topic):?>
+                                <?php if (!empty($activity_id) && $activity_id === $topic['id']):?>
+						            <option selected value="<?php echo $topic['id']?>"><?php echo $topic['name'];?></option>
+                                <?php else: ?>
+                                    <option value="<?php echo $topic['id']?>"><?php echo $topic['name'];?></option>
+                                <?php endif; ?>    
+                            <?php endforeach;?>
+                        <!--
                             <option value="Tournaments">Tournaments</option>
                             <option value="Farewell">Farewell</option>
                             <option value="Get Together">Get Together</option>
-                            <option value="Admission Festival">Admission Festival</option>
+                            <option value="Admission Festival">Admission Festival</option>-->
 
                         </select>
                     </div>
-
+                    <div>
+                        <?php if (empty($activity_id)):?>
+                            <label>
+                            <input type="checkbox" name="published"> Publish
+                            </label>
+                        <?php else: ?>
+                            <label>
+                            <input type="checkbox" name="published" checked> Publish
+                            </label>
+                        <?php endif; ?> 
+                        
+                    </div>
 
                     <div>
-                        <button type="submit" class="btn btn-big">Add Activity</button>
+                        <button type="submit" name='add-post' class="btn btn-big">Add Activity</button>
                     </div>
                 </form>
 

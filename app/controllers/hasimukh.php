@@ -46,7 +46,7 @@ if(isset($_GET['del_id'])){
 if(isset($_POST['update-btn'])){
 
 
-    $errors = validateHasimukh2($_POST);
+    $errors = validateHasimukh($_POST);
     if(count($errors)=== 0){
         $id = $_POST['id'];
         unset($_POST['update-btn'], $_POST['id']);

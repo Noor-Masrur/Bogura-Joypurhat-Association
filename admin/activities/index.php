@@ -1,4 +1,5 @@
 <?php include("../../path.php");?>
+<?php include(ROOT_PATH . "/app/controllers/posts.php");?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,7 +46,7 @@
 
             <div class="content">
                 <h2 class="page-title">Manage Activites</h2>
-
+                <?php include(ROOT_PATH . "/app/includes/messages.php"); ?>
                 <table>
                     <thead>
                     <th>SN</th>
@@ -55,23 +56,23 @@
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>The first post is here</td>
-                            <td>Bogura</td>
-                            <td><a href="#" class="edit">Edit</a></td>
-                            <td><a href="#" class="delete">Delete</a></td>
-                            <td><a href="#" class="publish">Publish</a></td>
-                        </tr>
 
-                        <tr>
-                            <td>2</td>
-                            <td>The second post is here</td>
-                            <td>Bogura</td>
-                            <td><a href="#" class="edit">Edit</a></td>
-                            <td><a href="#" class="delete">Delete</a></td>
-                            <td><a href="#" class="publish">Publish</a></td>
-                        </tr>
+                        <?php foreach ($posts as $key => $post):?>
+                            <tr>
+                                <td><?php echo $key+1; ?></td>
+                                <td><?php echo $post['title']; ?></td>
+                                <td>Noor</td>
+                                <td><a href="edit.php?id=<?php echo $topic['id']; ?>" class="edit">Edit</a></td>
+                                <td><a href="index.php?del_id=<?php echo $topic['id']; ?>" class="delete">Delete</a></td>
+                                <?php if($post['published']):?>
+                                <td><a href="#" class="unpublish">Unpublish</a></td>
+                                <?php else:?>
+                                <td><a href="#" class="Publish">Publish</a></td>
+                                <?php endif;?>
+                            </tr>
+                        <?php endforeach;?>
+                        
+
 
                     </tbody>
                 </table>
