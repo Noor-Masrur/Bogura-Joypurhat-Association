@@ -8,7 +8,7 @@ if(isset($_GET['id'])){
 }
 
 else{
-    $post = selectOne('posts', ['id' => 32]);
+    $post = selectOne('posts', ['id' => 31]);
 }
 $posts = getNotHasimukhPosts();
 $topics = selectAll('activities');
